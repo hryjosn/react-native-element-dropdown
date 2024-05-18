@@ -33,7 +33,8 @@
     "prepack": "bob build",
     "release": "release-it",
     "example": "yarn --cwd example",
-    "bootstrap": "yarn example && yarn install"
+    "bootstrap": "yarn example && yarn install",
+    "postinstall": "cd node_modules/react-native-element-dropdown && npm install && npm run build"
   },
   "keywords": [
     "react-native",

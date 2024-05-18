@@ -18,13 +18,13 @@ import {
   Keyboard,
   KeyboardEvent,
   Modal,
+  StatusBar,
   StyleSheet,
   Text,
   TouchableHighlight,
   TouchableWithoutFeedback,
   View,
   ViewStyle,
-  StatusBar,
 } from 'react-native';
 import { useDetectDevice } from '../../toolkits';
 import { useDeviceOrientation } from '../../useDeviceOrientation';
@@ -59,6 +59,7 @@ const DropdownComponent: <T>(
       labelField,
       valueField,
       searchField,
+      renderText,
       value,
       activeColor = '#F6F7F8',
       fontFamily,
@@ -432,7 +433,9 @@ const DropdownComponent: <T>(
               ]}
               {...selectedTextProps}
             >
-              {isSelected !== null
+              {renderText
+                ? renderText(_.get(currentValue, labelField))
+                : isSelected !== null
                 ? _.get(currentValue, labelField)
                 : placeholder}
             </Text>
